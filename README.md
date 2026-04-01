@@ -2,63 +2,72 @@
 
 CS5100 Final Project - Dongni Zeng
 
-## Project Overview
-Implementing and evaluating recommendation algorithms using MovieLens dataset:
-1. Popularity-based recommendation (baseline)
-2. Collaborative filtering (user-based and item-based)
-3. Content-based recommendation
+## Overview
+Implementation and evaluation of recommendation algorithms using MovieLens 100K dataset.
 
-## Setup
+**Algorithms Implemented:**
+- Baseline models (Global Mean, User Mean, Popularity-based)
+- Item-based Collaborative Filtering
+- User-based Collaborative Filtering  
+- Matrix Factorization (SVD)
 
-### 1. Install Dependencies
+## Quick Start
+
+### 1. Setup Environment
 ```bash
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
+**Note:** This project requires `numpy<2.0` for compatibility with scikit-surprise.
+
 ### 2. Download Data
-Download MovieLens 100K from: https://grouplens.org/datasets/movielens/100k/
-Place in `data/raw/ml-100k/`
+1. Download MovieLens 100K from https://grouplens.org/datasets/movielens/100k/
+2. Extract and place the `ml-100k` folder in `data/raw/`
 
-### 3. Run Notebooks
-Start with `notebooks/01_data_exploration.ipynb`
+### 3. Run Code
+```bash
+# Data exploration
+jupyter notebook notebooks/01_data_exploration.ipynb
 
-## Project Structure
-- `data/` - Dataset storage
-- `notebooks/` - Jupyter notebooks for exploration
-- `src/` - Python source code
-- `results/` - Output figures and metrics
-- `docs/` - Documentation and progress reports
+# Test baseline models
+python3 src/baseline.py
+
+# Test collaborative filtering
+python3 src/collaborative_filtering.py
+
+# Test matrix factorization
+python3 src/matrix_factorization.py
+
+# Evaluate all models
+python3 src/evaluate_models.py
 ```
 
-4. SAVE **Cmd+S**）
+## Results
 
----
+| Model | RMSE | MAE |
+|-------|------|-----|
+| SVD | 0.9256 | 0.7259 |
+| Item-based CF | 0.9196 | 0.7154 |
+| User-based CF | 0.9988 | 0.7928 |
+| Popularity | 1.0210 | 0.8123 |
+| User Mean | 1.0417 | 0.8346 |
+| Global Mean | 1.1239 | 0.9420 |
 
-## 📝 **Step 3: create .gitignore**(optional but recommend)
+**Best Model:** Item-based CF achieves 18.1% improvement over baseline.
 
-1. New File → `.gitignore`
-2. Paste：
-```
-# Data files (too large for git)
-data/raw/
-data/processed/
+## Requirements
+- Python 3.8+
+- pandas, numpy (<2.0), scikit-learn
+- scikit-surprise
+- matplotlib, seaborn
+- jupyter
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-.venv/
-env/
+See `requirements.txt` for complete list.
 
-# Jupyter
-.ipynb_checkpoints/
-
-# macOS
-.DS_Store
-
-# Results (regeneratable)
-results/figures/*.png
-results/metrics/*.csv
+## License
+Academic project for CS5100 - Foundations of Artificial Intelligence
