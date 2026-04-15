@@ -63,27 +63,6 @@ python3 src/advanced_evaluation.py
 
 **Best Model:** Item-based CF achieves 17.39% improvement over baseline.
 
-## Project Structure
-```
-recommendation_system/
-├── data/
-│   ├── raw/ml-100k/        # MovieLens dataset
-│   └── processed/          # Train/test splits
-├── src/
-│   ├── data_loader.py      # Data loading utilities
-│   ├── baseline.py         # Baseline models
-│   ├── collaborative_filtering.py  # CF algorithms
-│   ├── matrix_factorization.py     # SVD implementation
-│   ├── evaluate_models.py  # Model evaluation
-│   └── advanced_evaluation.py      # Advanced analysis
-├── notebooks/
-│   └── 01_data_exploration.ipynb   # Data analysis
-├── results/
-│   ├── figures/            # Visualization plots
-│   └── metrics/            # Performance metrics
-└── requirements.txt
-```
-
 ## Requirements
 - Python 3.8+
 - pandas, numpy (<2.0), scikit-learn
