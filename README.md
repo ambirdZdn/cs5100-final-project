@@ -45,20 +45,44 @@ python3 src/matrix_factorization.py
 
 # Evaluate all models
 python3 src/evaluate_models.py
+
+# Advanced analysis (cold-start and parameter sensitivity)
+python3 src/advanced_evaluation.py
 ```
 
 ## Results
 
 | Model | RMSE | MAE |
 |-------|------|-----|
-| SVD | 0.9256 | 0.7259 |
-| Item-based CF | 0.9196 | 0.7154 |
-| User-based CF | 0.9988 | 0.7928 |
-| Popularity | 1.0210 | 0.8123 |
-| User Mean | 1.0417 | 0.8346 |
-| Global Mean | 1.1239 | 0.9420 |
+| Item-based CF | 0.9254 | 0.7227 |
+| SVD | 0.9270 | 0.7306 |
+| User-based CF | 1.0067 | 0.8010 |
+| Popularity | 1.0158 | 0.8106 |
+| User Mean | 1.0394 | 0.8317 |
+| Global Mean | 1.1202 | 0.9399 |
 
-**Best Model:** Item-based CF achieves 18.1% improvement over baseline.
+**Best Model:** Item-based CF achieves 17.39% improvement over baseline.
+
+## Project Structure
+```
+recommendation_system/
+├── data/
+│   ├── raw/ml-100k/        # MovieLens dataset
+│   └── processed/          # Train/test splits
+├── src/
+│   ├── data_loader.py      # Data loading utilities
+│   ├── baseline.py         # Baseline models
+│   ├── collaborative_filtering.py  # CF algorithms
+│   ├── matrix_factorization.py     # SVD implementation
+│   ├── evaluate_models.py  # Model evaluation
+│   └── advanced_evaluation.py      # Advanced analysis
+├── notebooks/
+│   └── 01_data_exploration.ipynb   # Data analysis
+├── results/
+│   ├── figures/            # Visualization plots
+│   └── metrics/            # Performance metrics
+└── requirements.txt
+```
 
 ## Requirements
 - Python 3.8+
@@ -69,5 +93,5 @@ python3 src/evaluate_models.py
 
 See `requirements.txt` for complete list.
 
-## License
-Academic project for CS5100 - Foundations of Artificial Intelligence
+## Reference
+Sarwar, B., Karypis, G., Konstan, J., & Riedl, J. (2001). Item-based collaborative filtering recommendation algorithms. Proceedings of the 10th International Conference on World Wide Web, 285-295.
